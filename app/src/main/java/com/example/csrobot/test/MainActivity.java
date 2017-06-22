@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             line = in.readLine();
             while (line != null) {
                 str.add(line);
+                //Toast.makeText(this, "Str size: " + str.size(), Toast.LENGTH_SHORT).show();
                 line = in.readLine();
             }
             in.close();
@@ -69,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
         enterNewIPEdit.setVisibility(View.VISIBLE);
         backToListBtn = (Button) findViewById(R.id.BACK_TO_LIST_BTN);
         backToListBtn.setVisibility(View.VISIBLE);
-
-        //TODO: add new text to the list
-            //update the list if possible?!?
-        //TODO: make sure list is not more than 5. If so delete oldest
     }
 
     public void backToList(View view) {
@@ -107,18 +104,16 @@ public class MainActivity extends AppCompatActivity {
             enterNewIPEdit = (EditText) findViewById(R.id.EDIT_NEW_IP);
             masterIP_message = enterNewIPEdit.getText().toString();
 
-            if(str.size() > 5) {
-               str.remove(0);
+            while (str.size() >= 5) {
+                str.remove(0);
             }
+
             str.add(masterIP_message);
 
             try {
-                FileOutputStream fos = openFileOutput("tempData", Context.MODE_PRIVATE);
-                for(index = str.size() - 1; index > 0; index --) {
-                    fos.write(str.get(index).getBytes());
-                    fos.write(System.getProperty("line.separator").getBytes());
-                    fos.write(str.get(index).getBytes());
-                    fos.write(System.getProperty("line.separator").getBytes());
+                FileOutputStream fos = openFileOutput("previousData", Context.MODE_PRIVATE);
+
+                for(index = 0; index < str.size(); index ++) {
                     fos.write(str.get(index).getBytes());
                     fos.write(System.getProperty("line.separator").getBytes());
                 }
