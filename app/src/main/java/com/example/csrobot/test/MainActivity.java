@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button backToListBtn;
     private Button enterNewIPBtn;
     private List<String> str = new ArrayList<String>();
+    private List<String> revStr = new ArrayList<String>();
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String line;
+        int index;
 
         try {
             FileInputStream fis = openFileInput("previousData");
@@ -51,9 +53,13 @@ public class MainActivity extends AppCompatActivity {
         catch (Throwable t) {
             Toast.makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
         }
+        //Reverse str so that the most recent IP is on top
+        for(index = str.size() - 1; index >= 0; index--){
+            revStr.add(str.get(index));
+        }
+
         masterIPSpinner = (Spinner) findViewById(R.id.MASTER_IP_SPINNER);
-        //TODO: Pass in a reversed str to make the top most recent
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, str);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, revStr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         masterIPSpinner.setAdapter(adapter);
     }
