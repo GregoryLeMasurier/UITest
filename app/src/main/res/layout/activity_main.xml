@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.csrobot.test.MainActivity">
+
+    <Spinner
+        android:id="@+id/MASTER_IP_SPINNER"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/NEW_IP_BUTTON"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/edit_message"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/EDIT_NEW_IP"
+        android:visibility = "invisible"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="25dp"
+        android:hint="@string/edit_new_ip"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/NEW_IP_BUTTON"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="sendMessage"
+        android:text="@string/button_send"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText"
+        app:layout_constraintLeft_toRightOf="@+id/editText"
+        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/NEW_IP_BUTTON"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="enterNewIP"
+        android:text="@string/button_new_ip"
+        app:layout_constraintLeft_toRightOf="@+id/MASTER_IP_SPINNER"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="21dp"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+    <Button
+        android:id="@+id/BACK_TO_LIST_BTN"
+        android:visibility = "invisible"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="backToList"
+        android:text="@string/button_back_to_list"
+        app:layout_constraintLeft_toRightOf="@+id/MASTER_IP_SPINNER"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="21dp"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+</android.support.constraint.ConstraintLayout>

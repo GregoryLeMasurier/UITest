@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="edit_message">Enter A Message</string>
+    <string name="edit_new_ip">Enter New IP</string>
+    <string name="button_send">Send</string>
+    <string name="button_back_to_list">Back To List</string>
+    <string name="button_new_ip">Set New IP</string>
+</resources>
