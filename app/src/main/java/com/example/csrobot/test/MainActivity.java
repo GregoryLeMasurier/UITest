@@ -39,13 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             FileInputStream fis = openFileInput("previousData");
-            //BufferedReader in = new BufferedReader(new InputStreamReader(getAssets().open("previousData.txt")));
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-
             line = in.readLine();
             while (line != null) {
                 str.add(line);
-                //Toast.makeText(this, "Str size: " + str.size(), Toast.LENGTH_SHORT).show();
                 line = in.readLine();
             }
             in.close();
@@ -55,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
         }
         masterIPSpinner = (Spinner) findViewById(R.id.MASTER_IP_SPINNER);
+        //TODO: Pass in a reversed str to make the top most recent
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, str);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         masterIPSpinner.setAdapter(adapter);
@@ -104,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
             enterNewIPEdit = (EditText) findViewById(R.id.EDIT_NEW_IP);
             masterIP_message = enterNewIPEdit.getText().toString();
 
+            //Removes the oldest ip to make space for the new one
             while (str.size() >= 5) {
                 str.remove(0);
             }
-
             str.add(masterIP_message);
 
             try {
